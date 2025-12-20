@@ -3,7 +3,7 @@
      FUNGSI: Dashboard admin dengan statistik
      ================================================ --}}
 
-     @extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard')
 @section('title', 'Dashboard')
