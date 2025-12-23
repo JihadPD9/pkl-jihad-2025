@@ -12,4 +12,14 @@ class CartItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
+
+    public function getSubtotalAttribute()
+    {
+        // Pastikan field harga produk sesuai (price)
+        return $this->quantity * $this->product->price;
+    }
 }
