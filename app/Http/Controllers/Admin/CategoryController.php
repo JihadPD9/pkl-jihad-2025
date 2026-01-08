@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -56,6 +57,8 @@ class CategoryController extends Controller
 
         // 4. Simpan ke Database
         Category::create($validated);
+        // CategoryController store/update/delete
+        Cache::forget('global_categories');
 
         return back()->with('success', 'Kategori berhasil ditambahkan!');
     }
@@ -93,6 +96,8 @@ class CategoryController extends Controller
 
         // 4. Update data di database
         $category->update($validated);
+        // CategoryController store/update/delete
+        Cache::forget('global_categories');
 
         return back()->with('success', 'Kategori berhasil diperbarui!');
     }
@@ -117,6 +122,8 @@ class CategoryController extends Controller
 
         // 3. Hapus record dari database
         $category->delete();
+        // CategoryController store/update/delete
+        Cache::forget('global_categories');
 
         return back()->with('success', 'Kategori berhasil dihapus!');
     }

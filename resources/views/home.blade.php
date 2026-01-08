@@ -9,7 +9,7 @@
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="bg-primary text-white py-5">
+    <section class="hero-green py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -20,7 +20,7 @@
                         Temukan berbagai produk berkualitas dengan harga terbaik.
                         Gratis ongkir untuk pembelian pertama!
                     </p>
-                    <a href="{{ route('catalog.index') }}" class="btn btn-light btn-lg">
+                    <a href="{{ route('catalog.index') }}" class="btn btn-green btn-lg">
                         <i class="bi bi-bag me-2"></i>Mulai Belanja
                     </a>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="{{ route('catalog.index', ['category' => $category->slug]) }}"
                            class="text-decoration-none">
-                            <div class="card border-0 shadow-sm text-center h-100">
+                            <div class="card border-1 shadow-sm text-center h-100 category-card">
                                 <div class="card-body">
                                     <img src="{{ $category->image_url }}"
                                          alt="{{ $category->name }}"
@@ -60,7 +60,7 @@
     </section>
 
     {{-- Produk Unggulan --}}
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-green-soft">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">Produk Unggulan</h2>
@@ -122,3 +122,65 @@
         </div>
     </section>
 @endsection
+
+<style>
+    /* ===== THEME GREEN GRADIENT ===== */
+:root {
+    --green-main: #99b3a7ff;
+    --green-soft: #4cc568ff;
+    --green-light: #038b3eff;
+}
+
+/* Hero Section */
+.hero-green {
+    background: linear-gradient(135deg, #04b169ff 0%, #d3fadbff 60%, #16b445ff 100%);
+    color: #ffffff;
+}
+
+.hero-green h1,
+.hero-green p {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Button */
+.btn-green {
+    background: linear-gradient(135deg, #ffffffff, #04b169ff);
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-green:hover {
+    background: linear-gradient(135deg, #04b169ff, #ffffffff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(25,135,84,0.3);
+}
+
+/* Card */
+.card {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Category Card */
+.category-card {
+    background: linear-gradient(180deg, #ffffffff, #3ecf87ff);
+}
+
+/* Section background */
+.bg-green-soft {
+    background: linear-gradient(180deg, #ffffffff, #04b169ff);
+}
+
+/* Promo Banner */
+.promo-green {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: #ffffff;
+}
+
+</style>
