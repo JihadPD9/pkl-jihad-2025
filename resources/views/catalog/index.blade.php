@@ -23,6 +23,21 @@
                                 </div>
                             @endforeach
                         </div>
+                        {{-- DISKON --}}
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       name="on_sale"
+                                       id="on_sale"
+                                       value="1"
+                                       {{ request('on_sale') ? 'checked' : '' }}
+                                       onchange="this.form.submit()">
+                                <label class="form-check-label" for="on_sale">
+                                    <i class="bi bi-tag text-danger"></i> Sedang Diskon
+                                </label>
+                            </div>
+                        </div>
 
                         {{-- Filter Harga --}}
                         <div class="mb-3">
@@ -33,7 +48,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 btn-sm">Terapkan Filter</button>
+                        <button type="submit" class="btn btn-success w-100 btn-sm">Terapkan Filter</button>
                         <a href="{{ route('catalog.index') }}" class="btn btn-outline-secondary w-100 btn-sm mt-2">Reset</a>
                     </form>
                 </div>

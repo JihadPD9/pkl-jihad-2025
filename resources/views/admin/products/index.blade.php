@@ -166,7 +166,6 @@
                         <label class="form-label fw-bold">Harga (Rp)</label>
                         <input type="number" name="price" class="form-control" value="{{ $product->price }}" required>
                     </div>
-
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold">Stok</label>
                         <input type="number" name="stock" class="form-control" value="{{ $product->stock }}" required>
@@ -178,17 +177,63 @@
                         <input type="number" name="weight" class="form-control" value="{{ $product->weight }}" required>
                     </div>
                     <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Harga Diskon</label>
+                            <input type="number" name="discount_price"
+                                class="form-control @error('discount_price') is-invalid @enderror"
+                                value="{{ old('discount_price', $product->discount_price) }}">
+                            @error('discount_price') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold">Gambar (Opsional)</label>
-                        <input type="file" name="image" class="form-control">
+                        <input type="file" name="images[]" class="form-control">
                     </div>
                 </div>
-                
+                {{-- Gambar lama --}}
+                    <div class="row g-3">
+                        @foreach($product->images as $image)
+                        <div class="col-md-3">
+                            <div class="card h-100 shadow-sm">
+                                <img src="{{ asset('storage/'.$image->image_path) }}" class="card-img-top"
+                                    style="object-fit:cover;height:160px">
 
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="is_active" value="1"
-                        {{ $product->is_active ? 'checked' : '' }}>
-                    <label class="form-check-label">Aktif</label>
-                </div>
+                                <div class="card-body p-2 text-center">
+                                    <div class="form-check mb-1">
+                                        <input class="form-check-input" type="radio" name="primary_image"
+                                            value="{{ $image->id }}" {{ $image->is_primary ? 'checked' : '' }}>
+                                        <label class="form-check-label small">
+                                            Gambar Utama
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="delete_images[]"
+                                            value="{{ $image->id }}">
+                                        <label class="form-check-label small text-danger">
+                                            Hapus
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <br>
+                <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_active" value="1" {{
+                                    old('is_active', $product->is_active) ? 'checked' : '' }}>
+                                <label class="form-check-label fw-semibold">Aktif</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" {{
+                                    old('is_featured', $product->is_featured) ? 'checked' : '' }}>
+                                <label class="form-check-label fw-semibold">Produk Unggulan</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
             <div class="modal-footer">
@@ -249,14 +294,28 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold">Gambar (Opsional)</label>
-                        <input type="file" name="image" class="form-control">
+                        <input type="file" name="images[]" class="form-control">
                     </div>
                     </div>
                     
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="is_active" value="1"{{ old('is_active') ? 'checked' : '' }}>
-                        <label class="form-check-label">Aktif</label>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_active" value="1" {{
+                                    old('is_active', true) ? 'checked' : '' }}>
+                                <label class="form-check-label fw-semibold">Aktif</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" {{
+                                    old('is_featured') ? 'checked' : '' }}>
+                                <label class="form-check-label fw-semibold">Produk Unggulan</label>
+                            </div>
+                        </div>
                     </div>
+                    
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

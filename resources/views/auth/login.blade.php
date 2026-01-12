@@ -14,7 +14,7 @@ ditampilkan di @yield('content') --}}
 
       <div class="card shadow-sm">
         {{-- Card Header --}}
-        <div class="card-header bg-primary text-white text-center">
+        <div class="card-header bg-success text-white text-center">
           <h4 class="mb-0">🔐 Login ke Akun Anda</h4>
         </div>
 
@@ -89,7 +89,7 @@ ditampilkan di @yield('content') --}}
             ================== --}}
             <div class="d-grid gap-2">
               {{-- ↑ d-grid = display grid, membuat button full width --}}
-              <button type="submit" class="btn btn-primary btn-lg">
+              <button type="submit" class="btn btn-success btn-lg">
                 Login
               </button>
             </div>

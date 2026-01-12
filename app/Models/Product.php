@@ -168,7 +168,7 @@ class Product extends Model
             return $image->image_url;
         }
 
-        return asset('images/shoes.png');
+        return asset('images/'); // Placeholder
     }
 
     /**

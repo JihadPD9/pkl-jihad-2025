@@ -3,12 +3,11 @@
      FUNGSI: Navigation bar untuk customer
      ================================================ --}}
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+     <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top">
     <div class="container">
         {{-- Logo & Brand --}}
         <a class="navbar-brand text-primary" href="{{ route('home') }}">
-            <i class="bi bi-bag-heart-fill me-2"></i>
-            TokoOnline
+            <img src="{{ asset('images/title.png') }}" alt="Logo Toko Sepatu Keren" width="200" height="200">
         </a>
 
         {{-- Mobile Toggle --}}
@@ -118,7 +117,7 @@
                         <a class="nav-link" href="{{ route('login') }}">Masuk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-sm ms-2" href="{{ route('register') }}">
+                        <a class="btn btn-success btn-sm ms-2" href="{{ route('register') }}">
                             Daftar
                         </a>
                     </li>
@@ -127,3 +126,96 @@
         </div>
     </div>
 </nav>
+
+<style>
+    /* =====================================
+   NAVBAR – GREEN LIGHT THEME
+===================================== */
+.navbar {
+    background: linear-gradient(135deg, #177c3cff, #66a500) !important;
+}
+
+/* Brand */
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.navbar-brand i {
+    color: #ecfdf5;
+}
+
+/* Nav links */
+.navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #ecfdf5 !important;
+    transform: translateY(-1px);
+}
+
+/* Search */
+.navbar .form-control {
+    border-radius: 12px 0 0 12px;
+    border: none;
+}
+
+.navbar .btn-outline-primary {
+    border-radius: 0 12px 12px 0;
+    border: none;
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.navbar .btn-outline-primary:hover {
+    background: #15803d;
+}
+
+/* Badge */
+.navbar .badge {
+    font-size: 0.6rem;
+}
+
+/* User avatar dropdown */
+.navbar .dropdown-menu {
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.navbar .dropdown-item:hover {
+    background: #dcfce7;
+}
+
+/* =====================
+   BUTTON DAFTAR
+===================== */
+.navbar .btn-success {
+    background: linear-gradient(135deg, #15803d, #166534);
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn-success:hover {
+    background: linear-gradient(135deg, #166534, #14532d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(22,163,74,0.45);
+}
+
+/* Mobile toggler */
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.7);
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+</style>

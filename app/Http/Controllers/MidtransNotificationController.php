@@ -175,6 +175,7 @@ class MidtransNotificationController extends Controller
 
         // Update Order
         $order->update([
+            'payment_status' => 'paid',
             'status' => 'processing', // Siap diproses/dikirim
         ]);
 
@@ -185,9 +186,9 @@ class MidtransNotificationController extends Controller
                 'paid_at' => now(),
             ]);
         }
-
+        $order->load('user');
         // TODO: Kirim email konfirmasi pembayaran
-        // event(new PaymentSuccessful($order));
+        event(new OrderPaidEvent($order));
     }
 
     /**

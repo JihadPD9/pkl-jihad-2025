@@ -29,6 +29,8 @@ class UpdateProductRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'weight' => 'nullable|numeric|min:0',
             'is_active' => 'boolean',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'discount_price' => 'nullable|numeric|min:0|lt:price',
             // Tambahkan aturan validasi lainnya sesuai kebutuhan
         ];
     }

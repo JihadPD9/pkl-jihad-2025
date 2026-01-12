@@ -12,39 +12,17 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Elektronik',
-                'slug' => 'elektronik',
-                'description' => 'Perangkat elektronik seperti smartphone, laptop, dan gadget lainnya',
+                'name' => 'Sneakers',
+                'slug' => 'sneakers',
+                'description' => 'Sepatu Sneakers Untuk Pria Dan Wanita',
+                'image' => 'categories/sneakers.jpg',
                 'is_active' => true,
             ],
             [
-                'name' => 'Fashion Pria',
-                'slug' => 'fashion-pria',
-                'description' => 'Pakaian, sepatu, dan aksesoris untuk pria',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Fashion Wanita',
-                'slug' => 'fashion-wanita',
-                'description' => 'Pakaian, sepatu, dan aksesoris untuk wanita',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Makanan & Minuman',
-                'slug' => 'makanan-minuman',
-                'description' => 'Berbagai makanan ringan, minuman, dan bahan makanan',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Kesehatan & Kecantikan',
-                'slug' => 'kesehatan-kecantikan',
-                'description' => 'Produk kesehatan, skincare, dan kosmetik',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Rumah Tangga',
-                'slug' => 'rumah-tangga',
-                'description' => 'Peralatan rumah tangga dan dekorasi',
+                'name' => 'Sports Shoes',
+                'slug' => 'sports-shoes',
+                'description' => 'Sepatu Olahraga Untuk Pria Dan Wanita',
+                'image' => 'categories/sports.jpg',
                 'is_active' => true,
             ],
         ];

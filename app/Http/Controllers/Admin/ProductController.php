@@ -148,6 +148,24 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
+        $data = $request->validate([
+        'name' => 'required',
+        'category_id' => 'required',
+        'price' => 'required|numeric',
+        'stock' => 'required|integer',
+        'weight' => 'required|integer',
+        'discount_price' => 'nullable|numeric',
+        // 'is_active' tidak perlu 'required' karena bisa kosong jika tidak dicentang
+    ]);
+
+        // LOGIKA PENTING: Jika checkbox tidak dicentang, set nilainya ke 0
+        $data['is_active'] = $request->has('is_active') ? 1 : 0;
+        
+        // Jika Anda punya is_featured juga:
+        $data['is_featured'] = $request->has('is_featured') ? 1 : 0;
+
+        $product->update($data);
+        
         try {
             DB::beginTransaction();
 
